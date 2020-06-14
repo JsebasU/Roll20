@@ -1,0 +1,584 @@
+<div class="main">
+
+<!-- LOGO SECTION -->
+  <div class="logo section"></div>
+
+<!-- NAME SECTION -->
+  <div class="name section">
+    <div class="section-small flex-center">
+      <label>Nombre: </label>
+      <input name="attr_character_name" type="text">
+    </div>
+    <div class="section-small flex-center">
+      <label>Arcana: </label>
+      <input name="attr_order" type="text">
+    </div>
+  </div>
+<!--Iniciativas-->  
+  <div>
+      <button name="roll_init" type="roll" value="&{template:default} {{name=Initiative}} {{Result=[[d10+(@{Inic})]]}} &{tracker}"><span>Initiative</span></button>
+    </div>
+<hr>
+    <div class="stat-block flex-center">
+      <label>HP/MaxHP/AddHP</label>
+      <input name="attr_hit_points"     type="number" value="">      
+      <span name="attr_hit_points_max"  type="number" value=""></span>
+      <input name="attr_hit_points_add"     type="number" value="">
+    </div>
+  </div>
+  <div class="stat-block flex-center">
+      <label>SP/MaxSP/AddSP</label>
+      <input name="attr_soul_points"     type="number" value="">
+      <span name="attr_soul_points_max" type="number" value=""></span>
+      <input name="attr_Soul_points_add"     type="number" value="">
+    </div>
+  </div>
+<hr>
+<!-- MAIN STAT SECTION -->
+
+    <div class="stat-block flex-center">
+      <label>Armadura</label>
+      <label>Nombre/Proteccion/Esquiva/Proteccion Perforacion/Proteccion Magica</label>
+        <span>
+            <input name="attr_armadura_nombre" type="text">
+            <input name="attr_defense"       type="number" value="">
+            <input name="attr_Esquiva"       type="number" value="">
+            <input name="attr_prot_per"       type="number" value="">
+            <input name="attr_prot_mag"       type="number" value="">
+            <button name="roll_Def" type="roll" value="&{template:default} {{name=@{armadura_nombre}}} {{Proteccion=[[@{defense}]]}} {{Esquiva=[[@{Esquiva}]]}} {{Proteccion Perforacion=[[@{prot_per}]]}} {{Proteccion Magica=[[@{prot_mag}]]}}"><span>Defensa</span></button>
+        </span>
+    </div>
+    <hr>
+    <label>Accesorio</label>
+      <label>Nombre/Efecto</label>
+        <span>
+            <input name="attr_acc_nombre" type="text">
+            <input name="attr_efecto"       type="text">
+        </span>
+    <hr>
+<!--Stasts mundo normal-->
+    <div class="stat-block flex-center">
+      <label>Handness</label>
+      <input name="attr_handness" type="number" value="">
+      <input name="attr_handness_bonus" type ="hidden" value= 0></span>
+    </div>
+
+    <div class="stat-block flex-center">
+      <label>Knowledge</label>
+      <input name="attr_Knowledge" type="number" value="">
+      <span name="attr_knowledge_bonus"  type ="hidden" value= 0></span>
+    </div>
+
+    <div class="stat-block flex-center">
+      <label>Courage</label>
+      <input name="attr_Courage" type="number" value="">
+      <span name="attr_Courage_bonus" type ="hidden" value= 0></span>
+    </div>
+
+    <div class="stat-block flex-center">
+      <label>UnderStandy</label>
+      <input name="attr_Understandy" type="number" value="">
+      <span name="attr_UnderstandyP_bonus" type ="hidden" value= 0></span>
+      <span name="attr_UnderstandyE_bonus" type ="hidden" value= 0></span>
+    </div>
+    
+    <div class="stat-block flex-center">
+      <label>Karma</label>
+      <input name="attr_Karma" type="number" value="">
+      <span name="attr_karma_bonus" type ="hidden" value= 0></span>
+    </div>
+
+  <hr>  
+<!--Stasts mundo Meta-->
+    <div class="stat-block flex-center">
+      <label>Fuerza</label>
+      <input name="attr_Fuerza" type="number" value="">
+    </div>
+
+    <div class="stat-block flex-center">
+      <label>Magia</label>
+      <input name="attr_Magia" type="number" value="">
+    </div>
+
+    <div class="stat-block flex-center">
+      <label>Endurance</label>
+      <input name="attr_Endurance" type="number" value="">
+    </div>
+
+    <div class="stat-block flex-center">
+      <label>Agilidad</label>
+      <input name="attr_Agilidad" type="number" value="">
+    </div>
+    
+    <div class="stat-block flex-center">
+      <label>Luck</label>
+      <input name="attr_Luck" type="number" value="">
+    </div>
+
+  <hr> 
+<!-- RESISTANCE/WEAKNESS/ADVANTAGE SECTION -->
+  <div class="resistance section flex-center">
+    <div>
+      <label>Resistance/</label>
+      <label>Weakness</label>
+    </div>
+    <div>
+      <input name="attr_resistance1" type="text">
+      <input name="attr_resistance2" type="text">
+      <input name="attr_resistance3" type="text">
+      <input name="attr_resistance4" type="text">
+      <input name="attr_resistance5" type="text">
+    </div>
+  </div>
+<hr>
+<label>Armas</label>
+ <div class="load section flex-center flex-middle flex-down">
+    <label>Melee/Daño/Perforacion/Daño Adicional/Presicion</label>
+    <span>
+      <input name="attr_attack_name" type="text" placeholder="Weapon Melee Name">
+      <input name="attr_attack_Mdamage" type="number" value="">
+      <input name="attr_attack_perf" type="text" value="">
+      <input name="attr_attack_Mbonus" type="text" value="1d6"> 
+      <input name="attr_attack_Maccu" type="number" value="">
+      <button name="roll_attack_melee" type="roll" value="&{template:default} {{name=@{attack_name}}} {{Attack=[[d100<@{MeleeAccu}]]}} {{Damage=[[(@{attack_Mdamage})+(@{attack_Mbonus})+(@{DamageWeap})]]}} {{Perforacion =[[@{attack_perf}]]}} {{Critico = [[5+(@{RangeCritico})]]}}" class ="small"></button>
+    </span>
+  </div>
+  <!--Armasde fuego-->
+  <div class="load section flex-center flex-middle flex-down">
+    <label>Range/Daño/Perforacion/Daño Adicional/Presicion/Municion/Rondas/Recoil</label>
+    <span>
+      <input name="attr_attackD_name" type="text" placeholder="Weapon Range Name">
+      <input name="attr_attackD_Mdamage" type="number" value="">
+      <input name="attr_attackD_perf" type="text" value="">
+      <input name="attr_attackD_Mbonus" type="text" value="1d6"> 
+      <input name="attr_attackD_Maccu" type="number" value="">
+      <input name="attr_attackD_Ammo" type="number" value="">
+      <input name="attr_attackD_Rondas" type="number" value="">
+      <input name="attr_attackD_Recoil" type="number" value="">
+      <input name="attr_attackD_DisparosLanzados" type="text" placeholder="Disparos a realizar">
+      <button name="roll_attackD_melee" type="roll" value="&{template:default} {{name=@{attackD_name}}} {{Attack=[[d100<@{DistaAccu}]]}} {{Damage=[[(@{attackD_Mdamage})+(@{attackD_Mbonus})]]}} {{Perforacion =[[@{attackD_perf}]]}} {{Disparos Hechos =[[@{attackD_DisparosLanzados}]]}} {{Critico = [[5+(@{RangeCritico})]]}}" class ="small"></button>
+    </span>
+  </div>
+<!-- LOAD SECTION -->
+  <div class="load section flex-center flex-middle flex-down">
+    <label>Habilidades</label>
+    <fieldset class="repeating_skills">
+    <span>
+      <input name="attr_attack_name" type="text" placeholder="Attack/Weapon Name">
+      <input name="attr_prec" type="number" value="">
+      <select name="attr_presicionA" class="dtype">
+                <option value="100">apoyo</option>
+                <option value="@{abiMeleeAccu}">Habilidad Fisica</option>
+                <option value="@{abiAccuMagi}">Habilidad Magica</option>
+            </select>
+      <input name="attr_attack_bonus" type="number" value=""> 
+      <input name="attr_attack_damage" type="text" value="1d6" class="small">
+       <input name="attr_attack_type" type="text" class="small" placeholder="type">
+       <input name="attr_attack_dep" type="text" class="small" placeholder="Descripcion/Gastos SP">
+      <select name="attr_damagehab" class="dtype">
+                <option value="@{DamageabiMel}">Habilidad Fisica</option>
+                <option value="@{abiMagi}">Habilidad Magica</option>
+                <option value="0">-</option>
+            </select>
+      <button name="roll_attack" type="roll" value="&{template:default} {{name=@{attack_name}}} {{Attack=[[d100]]}} {{Presicion=[[(@{presicionA} + @{prec})]]}} {{Damage=[[(@{attack_damage}+@{damagehab}+@{attack_bonus})]]}} {{tipo = @{attack_type}}} {{Descripcion = @{attack_dep}}}" class ="small"></button>
+    </span>
+    <hr>
+    </fieldset>
+  </div>
+ <hr>
+  <div class="load section flex-center flex-middle flex-down">
+    <label>Defensas</label>
+    <p>
+         <button name="roll_Esquivar" type="roll" value="&{template:default} {{name=Esquivar}} {{Attack=[[d100<@{Esquivar}]]}}" class ="small">Esquivar</button>
+    </p>
+    <p>
+        <input name="attr_Addresistir" type="text" class ="small" placeholder="Resistir Adicional">
+        <button name="roll_Resistir" type="roll" value="&{template:default} {{name=Resistir}} {{Resistir=[[d100<@{Resistir}]]}} {{Resisitir Adicional =[[@{AddResistir}]]}}" class ="small">Resistir</button>
+    </p>
+    <p>
+         <button name="roll_huir" type="roll" value="&{template:default} {{name=Huir}} {{Huir=[[d100<@{Huir}]]}}" class ="small">Huir</button>
+    </p>
+    <p>
+        <input name="attr_dañoMagico" type="text" class ="small" placeholder="DañoMagico">
+         <button name="roll_Rmagica" type="roll" value="&{template:default} {{name=Reduccion Magica}} {{Reduccion=[[(@{dañoMagico})-(@{protMagic})]]}}" class ="small">Reduccion Magica</button>
+    </p>
+<input name="attr_MeleeAccu" type="hidden" value="0">
+<input name="attr_DistaAccu" type="hidden" value="0">
+<input name="attr_DamageWeap" type="hidden" value="0">
+<input name="attr_RangeCritico" type="hidden" value="0">
+<input name="attr_Esquivar" type="hidden" value="0">
+<input name="attr_Resistir" type="hidden" value="0">
+<input name="attr_Huir" type="hidden" value="0">
+<input name="attr_abiMeleeAccu" type="hidden" value="0">
+<input name="attr_DamageabiMel" type="hidden" value="0">
+<input name="attr_abiAccuMagi" type="hidden" value="0">
+<input name="attr_abiMagi" type="hidden" value="0">
+<input name="attr_protMagic" type="hidden" value="0">
+<input name="attr_Inic" type="hidden" value="0">
+<hr>  
+<!-- BIO SECTION -->
+  <div class="bio section flex-center flex-middle flex-down">
+    <label>Bio</label>
+    <textarea name="attr_bio" placeholder="Bio"></textarea>
+  </div>
+<!-- ---------------------------SHEET WORKERS----------------- -->
+
+
+<script type="text/worker">
+///Punteria con Armas
+on("sheet:opened change:Agilidad change:Understany change:attack_Maccu",function(){
+    getAttrs(["Agilidad","Understandy","attack_Maccu",], function(values) {
+    var Understandy = parseInt(values["Understandy"])||0;
+    var UnderstandyP_bonus =0;
+    var UnderstandyE_bonus =0;
+    var karma_bonus = 0;
+    var mAccu = parseInt(values["attack_Maccu"])||0;
+    var agilidad = parseInt(values["Agilidad"])||0;
+    var meleeAccu = 0;
+    
+    if(Understandy == 0) UnderstandyP_bonus=0;
+    else if(Understandy == 1) UnderstandyP_bonus=5;
+    else if(Understandy == 2) UnderstandyP_bonus=10;
+    else if(Understandy == 3) UnderstandyP_bonus=15;
+    else if(Understandy == 4) UnderstandyP_bonus=20;
+    else if(Understandy == 5) UnderstandyP_bonus=25;
+    else UnderstandyP_bonus=0;
+    
+    meleeAccu = Math.round(UnderstandyP_bonus + mAccu + (agilidad/4));
+
+    setAttrs({
+        "MeleeAccu": meleeAccu
+      });
+    });
+});
+///critico
+on("sheet:opened",function(){
+    getAttrs(["karma","Luck"], function(values) {
+    var karma = parseInt(values["karma"])||0;
+    var Luck = parseInt(values["Luck"])||0;
+    var karma_bonus = 0;
+    
+    if(karma == 0) karma_bonus=0;
+    else if(karma == 1) karma_bonus=5;
+    else if(karma == 2) karma_bonus=10;
+    else if(karma == 3) karma_bonus=15;
+    else if(karma == 4) karma_bonus=20;
+    else if(karma == 5) karma_bonus=25;
+    else karma_bonus=0;
+    
+    RangoCritico = Math.round(karma_bonus + (Luck/10));
+    
+    setAttrs({
+        "RangeCritico" :RangoCritico
+        });
+    });
+});
+//Presicion con armas de fuego
+on("sheet:opened",function(){
+    getAttrs(["Agilidad","Understandy","attackD_Maccu"], function(values) {
+    var Understandy = parseInt(values["Understandy"])||0;
+    var UnderstandyP_bonus =0;
+    var UnderstandyE_bonus =0;
+    var karma_bonus = 0;
+    var mAccu = parseInt(values["attackD_Maccu"])||0;
+    var agilidad = parseInt(values["Agilidad"])||0;
+    var meleeAccu = 0;
+
+    if(Understandy == 0) UnderstandyP_bonus=0;
+    else if(Understandy == 1) UnderstandyP_bonus=5;
+    else if(Understandy == 2) UnderstandyP_bonus=10;
+    else if(Understandy == 3) UnderstandyP_bonus=15;
+    else if(Understandy == 4) UnderstandyP_bonus=20;
+    else if(Understandy == 5) UnderstandyP_bonus=25;
+    else UnderstandyP_bonus=0;
+    
+     meleeAccu = Math.round(UnderstandyP_bonus + mAccu + (agilidad/4));
+
+    setAttrs({
+            "DistaAccu" : meleeAccu     
+        });
+    });
+});
+//Daño con pura Fuerza
+on("sheet:opened",function(){
+    getAttrs(["handness","Fuerza"], function(values) {
+    var handness = parseInt(values["handness"])||0;
+    var Fuerza = parseInt(values["Fuerza"])||0;
+    var handness_bonus = 0;
+    var damageWeap =0;
+
+     if(handness == 0) handness_bonus=0;
+    else if(handness == 1) handness_bonus=5;
+    else if(handness == 2) handness_bonus=10;
+    else if(handness == 3) handness_bonus=25;
+    else if(handness == 4) handness_bonus=75;
+    else if(handness == 5) handness_bonus=125;
+    else handness_bonus=0;
+    
+    damageWeap = handness_bonus + Fuerza;
+
+    setAttrs({
+            "DamageWeap" : damageWeap    
+        });
+    });
+});
+//Esquiva
+on("sheet:opened",function(){
+    getAttrs(["Agilidad","Understandy","Esquiva"], function(values) {
+    var Understandy = parseInt(values["Understandy"])||0;
+    var agilidad = parseInt(values["Agilidad"])||0;
+    var esquiva = parseInt(values["Esquiva"])||0;
+    var UnderstandyE_bonus =0;
+    var Esquivar =0;
+
+    if(Understandy == 0) UnderstandyE_bonus=0;
+    else if(Understandy == 1) UnderstandyE_bonus=5;
+    else if(Understandy == 2) UnderstandyE_bonus=10;
+    else if(Understandy == 3) UnderstandyE_bonus=15;
+    else if(Understandy == 4) UnderstandyE_bonus=20;
+    else if(Understandy == 5) UnderstandyE_bonus=25;
+    else UnderstandyE_bonus=0;
+
+    Esquivar = Math.round((agilidad/4)+ UnderstandyE_bonus + esquiva);
+
+    setAttrs({
+            "Esquivar" : Esquivar    
+        });
+    });
+});
+//Resisitir
+on("sheet:opened",function(){
+    getAttrs(["Endurance","Courage"], function(values) {
+    var Endurance = parseInt(values["Endurance"])||0;
+    var Courage = parseInt(values["Courage"])||0;
+    var Courage_bonus =0; 
+    var karma_bonus = 0;
+    
+    if(Courage == 0) Courage_bonus=0;
+    else if(Courage == 1) Courage_bonus=10;
+    else if(Courage == 2) Courage_bonus=25;
+    else if(Courage == 3) Courage_bonus=75;
+    else if(Courage == 4) Courage_bonus=125;
+    else if(Courage == 5) Courage_bonus=250;
+    else Courage_bonus=0;
+    
+    resistir = Math.round((Endurance/2)+ (Courage_bonus/4));
+
+    setAttrs({
+            "Resistir" : resistir   
+        });
+    });
+});
+//Huir
+on("sheet:opened",function(){
+    getAttrs(["karma","Luck","Agilidad"], function(values) {
+    var karma = parseInt(values["karma"])||0;
+    var Luck = parseInt(values["Luck"])||0;
+    var Agilidad = parseInt(values["Agilidad"])
+    var karma_bonus =0;
+    var huir =0;
+    
+        if(karma == 0) karma_bonus=0;
+    else if(karma == 1) karma_bonus=5;
+    else if(karma == 2) karma_bonus=10;
+    else if(karma == 3) karma_bonus=15;
+    else if(karma == 4) karma_bonus=20;
+    else if(karma == 5) karma_bonus=25;
+    else karma_bonus=0;
+    
+    huir = Math.round(karma_bonus +(Agilidad/4)+ (Luck/2))
+
+    setAttrs({
+            "Huir" : huir   
+        });
+    });
+});
+//Proteccion Magica
+on("sheet:opened",function(){
+    getAttrs(["defense","prot_mag","Magia", "knowledge"], function(values) {
+    var Defense = parseInt(values["defense"])||0;
+    var knowledge =parseInt(values["knowledge"])||0; 
+    var prot_mag = parseInt(values["prot_mag"])||0;
+    var magia = parseInt(values["Magia"])
+    var knowledge_bonus =0;
+    var rmagia =0;
+    
+    if(knowledge == 0) knowledge_bonus=0;
+    else if(knowledge == 1) knowledge_bonus=5;
+    else if(knowledge == 2) knowledge_bonus=10;
+    else if(knowledge == 3) knowledge_bonus=30;
+    else if(knowledge == 4) knowledge_bonus=50;
+    else if(knowledge == 5) knowledge_bonus=100;
+    else knowledge_bonus=0;
+    
+    rmagia = Math.round((Defense * (prot_mag/100))+(magia/2)+knowledge_bonus);
+
+    setAttrs({
+            "protMagic" : rmagia 
+        });
+    });
+});
+//Hp add
+on("sheet:opened",function(){
+    getAttrs(["handness","hit_points_add", "Endurance"], function(values) {
+    var handness = parseInt(values["handness"])||0;
+    var hitpoints = parseInt(values["hit_points_add"])||0;
+    var endurance = parseInt(values["Endurance"])||0;
+    var handness_bonus = 0;
+    var addhp = 0;
+    
+    if(handness == 0) handness_bonus=0;
+    else if(handness == 1) handness_bonus=5;
+    else if(handness == 2) handness_bonus=10;
+    else if(handness == 3) handness_bonus=25;
+    else if(handness == 4) handness_bonus=75;
+    else if(handness == 5) handness_bonus=125;
+    else handness_bonus=0;
+    
+   addhp = 100+ handness_bonus + hitpoints + endurance;
+
+    setAttrs({
+            "hit_points_max" : addhp
+        });
+    });
+});
+//Sp Add
+on("sheet:opened",function(){
+    getAttrs(["Knowledge","Magia","Soul_points_add"], function(values) {
+    var knowledge = parseInt(values["Knowledge"])||0;
+    var magia = parseInt(values["Magia"])||0;
+    var mana = parseInt(values["Soul_points_add"])||0;
+    var knowledge_bonus = 0;
+    var addSp = 0;
+    
+    if(knowledge == 0) knowledge_bonus=0;
+    else if(knowledge == 1) knowledge_bonus=5;
+    else if(knowledge == 2) knowledge_bonus=10;
+    else if(knowledge == 3) knowledge_bonus=30;
+    else if(knowledge == 4) knowledge_bonus=50;
+    else if(knowledge == 5) knowledge_bonus=100;
+    else knowledge_bonus=0;
+    
+   addSp = Math.round(knowledge_bonus+ (magia/4)+ mana);
+
+    setAttrs({
+            "soul_points_max" : addSp
+        });
+    });
+})
+// presicion Melee Habiidad
+on("sheet:opened",function(){
+    getAttrs(["Agilidad","Understandy"], function(values) {
+    var Understandy = parseInt(values["Understandy"])||0;
+    var UnderstandyP_bonus =0;
+    var agilidad = parseInt(values["Agilidad"])||0;
+    var presicionAdd= 0; 
+    
+    if(Understandy == 0) UnderstandyP_bonus=0;
+    else if(Understandy == 1) UnderstandyP_bonus=5;
+    else if(Understandy == 2) UnderstandyP_bonus=10;
+    else if(Understandy == 3) UnderstandyP_bonus=15;
+    else if(Understandy == 4) UnderstandyP_bonus=20;
+    else if(Understandy == 5) UnderstandyP_bonus=25;
+    else UnderstandyP_bonus=0;
+    
+    presicionAdd = Math.round(UnderstandyP_bonus +(agilidad/4));
+
+    setAttrs({
+            "abiMeleeAccu" : presicionAdd
+        });
+    });
+});
+// presicion magica Habiidad
+on("sheet:opened",function(){
+    getAttrs(["Magica","Understandy"], function(values) {
+    var Understandy = parseInt(values["Understandy"])||0;
+    var UnderstandyP_bonus =0;
+    var agilidad = parseInt(values["Magica"])||0;
+    var presicionAdd= 0; 
+    
+    if(Understandy == 0) UnderstandyP_bonus=0;
+    else if(Understandy == 1) UnderstandyP_bonus=5;
+    else if(Understandy == 2) UnderstandyP_bonus=10;
+    else if(Understandy == 3) UnderstandyP_bonus=15;
+    else if(Understandy == 4) UnderstandyP_bonus=20;
+    else if(Understandy == 5) UnderstandyP_bonus=25;
+    else UnderstandyP_bonus=0;
+    
+    presicionAdd = Math.round(UnderstandyP_bonus +(agilidad/4));
+
+    setAttrs({
+            "abiAccuMagi" : presicionAdd
+        });
+    });
+});
+//ataque fisico
+on("sheet:opened",function(){
+    getAttrs(["handness","Fuerza"], function(values) {
+    var handness = parseInt(values["handness"])||0;
+    var handness_bonus =0;
+    var fuerza = parseInt(values["Fuerza"])||0;
+    var dañoAdd= 0; 
+    
+    if(handness == 0) handness_bonus=0;
+    else if(handness == 1) handness_bonus=5;
+    else if(handness == 2) handness_bonus=10;
+    else if(handness == 3) handness_bonus=25;
+    else if(handness == 4) handness_bonus=75;
+    else if(handness == 5) handness_bonus=125;
+    else handness_bonus=0
+    
+    dañoAdd = handness_bonus + fuerza;
+
+    setAttrs({
+            "DamageabiMel" : dañoAdd
+        });
+    });
+});
+//ataque magico
+on("sheet:opened",function(){
+    getAttrs(["Magia","Knowledge",], function(values) {
+    var magia = parseInt(values["Magia"])||0;
+    var knowledge_bonus =0;
+    var knowledge= parseInt(values["Knowledge"])||0;
+    var dañoAdd= 0; 
+    
+    if(knowledge == 0) knowledge_bonus=0;
+    else if(knowledge == 1) knowledge_bonus=5;
+    else if(knowledge == 2) knowledge_bonus=10;
+    else if(knowledge == 3) knowledge_bonus=30;
+    else if(knowledge == 4) knowledge_bonus=50;
+    else if(knowledge == 5) knowledge_bonus=100;
+    else knowledge_bonus=0;
+    
+    dañoAdd = Math.round(knowledge_bonus + magia);
+
+    setAttrs({
+            "abiMagi" : dañoAdd
+        });
+    });
+});
+//Esquiva
+on("sheet:opened",function(){
+    getAttrs(["Agilidad","Understandy"], function(values) {
+    var Understandy = parseInt(values["Understandy"])||0;
+    var agilidad = parseInt(values["Agilidad"])||0;
+    var UnderstandyE_bonus =0;
+    var Iniciativa = 0;
+
+    if(Understandy == 0) UnderstandyE_bonus=0;
+    else if(Understandy == 1) UnderstandyE_bonus=5;
+    else if(Understandy == 2) UnderstandyE_bonus=10;
+    else if(Understandy == 3) UnderstandyE_bonus=15;
+    else if(Understandy == 4) UnderstandyE_bonus=20;
+    else if(Understandy == 5) UnderstandyE_bonus=25;
+    else UnderstandyE_bonus=0;
+
+    Iniciativa = agilidad +  UnderstandyE_bonus;
+
+    setAttrs({
+            "Inic" : Iniciativa   
+        });
+    });
+})
+</script>
